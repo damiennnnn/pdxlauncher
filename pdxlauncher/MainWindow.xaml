@@ -1,0 +1,78 @@
+﻿<metro:MetroWindow
+        xmlns:metro="http://metro.mahapps.com/winfx/xaml/controls" x:Name="pdxlaunch" x:Class="pdxlauncher.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:pdxlauncher"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+    xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
+    GlowBrush="{DynamicResource MaterialDesignCardBackground}"
+        BorderThickness="1"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="13"
+        TextOptions.TextFormattingMode="Ideal" 
+        TextOptions.TextRenderingMode="Auto"        
+        Background="{DynamicResource MaterialDesignPaper}"
+        FontFamily="{DynamicResource MaterialDesignFont}"
+        mc:Ignorable="d"
+        WindowTitleBrush="{DynamicResource MaterialDesignPaper}"
+        Title="pdxlaunch" Height="450" Width="800" ResizeMode="CanMinimize">
+
+    <metro:MetroWindow.RightWindowCommands>
+        <metro:WindowCommands>
+            <Button x:Name="extractbtn" Click="extract">
+                <StackPanel Orientation="Horizontal">
+                    <iconPacks:PackIconMaterial Width="24" Height="24" Kind="download" Foreground="{DynamicResource MaterialDesignBody}"/>
+                    <TextBlock Margin="4 0 0 0" VerticalAlignment="Center" Text="Install CreamAPI" Foreground="{DynamicResource MaterialDesignBody}"/>
+                </StackPanel>
+            </Button>
+            <Button Click="refresh">
+                <StackPanel Orientation="Horizontal">
+                    <iconPacks:PackIconMaterial Width="24" Height="24" Kind="Refresh" Foreground="{DynamicResource MaterialDesignBody}"/>
+                    <TextBlock Margin="4 0 0 0" VerticalAlignment="Center" Text="Refresh" Foreground="{DynamicResource MaterialDesignBody}"/>
+                </StackPanel>
+            </Button>
+            <Button Click="game_dir_click">
+                <StackPanel Orientation="Horizontal">
+                    <iconPacks:PackIconMaterial Width="24" Height="24" Kind="FolderOutline" Foreground="{DynamicResource MaterialDesignBody}"/>
+                    <TextBlock Margin="4 0 0 0" VerticalAlignment="Center" Text="Open Game Directory" Foreground="{DynamicResource MaterialDesignBody}"/>
+                </StackPanel>
+            </Button>
+            <Button Click="mod_dir_click">
+                <StackPanel Orientation="Horizontal">
+                    <iconPacks:PackIconMaterial Width="24" Height="24" Kind="Folder" Foreground="{DynamicResource MaterialDesignBody}"/>
+                    <TextBlock Margin="4 0 0 0" VerticalAlignment="Center" Text="Open Mod Directory" Foreground="{DynamicResource MaterialDesignBody}"/>
+                </StackPanel>
+            </Button>
+        </metro:WindowCommands>
+    </metro:MetroWindow.RightWindowCommands>
+
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="5*"/>
+            <ColumnDefinition Width="39*"/>
+        </Grid.ColumnDefinitions>
+        <materialDesign:Card Padding="32" Margin="0,355,0,0" Grid.ColumnSpan="2"/>
+        <ListBox x:Name="mod_list" HorizontalAlignment="Left" Height="312" Margin="10,38,0,0" VerticalAlignment="Top" Width="772" Grid.ColumnSpan="2"/>
+        <Button Name="launch_btn" Style ="{DynamicResource MaterialDesignRaisedAccentButton}"
+        ToolTip="Launch EU4" Margin="582,365,10,10" Height="Auto" Width="110" Click="launch_eu4" Grid.Column="1">
+            <StackPanel Orientation="Horizontal">
+                <iconPacks:PackIconMaterial Width="24" Height="24" Kind="PlayCircleOutline" Foreground="{DynamicResource MaterialDesignBody}"/>
+                <TextBlock Margin="8 0 0 0" VerticalAlignment="Center" Text="Launch" Foreground="{DynamicResource MaterialDesignBody}"/>
+            </StackPanel>
+        </Button>
+        <Button x:Name="creamapi_btn" Style ="{DynamicResource MaterialDesignRaisedButton}"
+            ToolTip="Launch with CreamAPI" Margin="435,365,132,10" Height="Auto" IsEnabled="False" Click="creamapi" Grid.Column="1">
+            <StackPanel Orientation="Horizontal">
+                <iconPacks:PackIconMaterial Width="24" Height="24" Kind="PlaySpeed" Foreground="{DynamicResource MaterialDesignBody}"/>
+                <TextBlock Margin="8 0 0 0" VerticalAlignment="Center" Text="CreamAPI" Foreground="{DynamicResource MaterialDesignBody}"/>
+            </StackPanel>
+        </Button>
+        <TextBlock x:Name="mod_count" HorizontalAlignment="Left" Margin="10,380,0,0" TextWrapping="Wrap" Text="0 mods loaded" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
+        <materialDesign:PackIcon Kind="Magnify" Margin="669,10,0,0" Height="23" Width="23" Grid.Column="1"/>
+        <TextBox x:Name="search_box" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="744" Margin="10,10,0,0" TextChanged="TextBox_TextChanged" Grid.ColumnSpan="2"/>
+    </Grid>
+</metro:MetroWindow>
